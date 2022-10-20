@@ -1,4 +1,5 @@
 # wirwerkenmitholz
+Es handelt sich um eine Webseiten-Projekt auf Reactbasis für einen Kunden, der seine Internetpräsenz ausbauen und professionalisieren möchte.
 
 # Getting Started with Create React App
 
