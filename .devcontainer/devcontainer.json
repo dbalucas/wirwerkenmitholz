@@ -1,5 +1,5 @@
 {
-	"name": "Node.js",
+	"name": "Online_DEV_ENV.js",
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:16-bullseye"
 
 	// Features to add to the dev container. More info: https://containers.dev/implementors/features.
