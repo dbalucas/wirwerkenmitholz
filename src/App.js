@@ -3,6 +3,7 @@ import ResponsiveAppBar from "./components/AppBar";
 import Home from "./views/Home/Home";
 import Kontakt from "./views/Kontakt/Kontakt";
 import { Routes, Route } from "react-router-dom";
+import { PictureCarousel } from "./components/Carousel/Carousel";
 
 const App = () => {
   return (
