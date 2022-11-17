@@ -47,7 +47,9 @@ const ResponsiveAppBar = () => {
         padding: "0 20px",
       }}
     >
-      <img src={Logo} />
+      <a href="/">
+        <img src={Logo} />
+      </a>
       <Box
         sx={{
           display: "flex",
