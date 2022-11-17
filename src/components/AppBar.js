@@ -1,13 +1,16 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
+import Logo from "../utils/icons/wwmh-icon.png";
 
 import Button from "@mui/material/Button";
 
@@ -34,30 +37,45 @@ const ResponsiveAppBar = () => {
   return (
     <AppBar
       position="sticky"
-      sx={{ backgroundColor: "#4feb34", display: "flex", flexDirection: "row" }}
+      sx={{
+        backgroundColor: "#4feb34",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100vw",
+        padding: "0 20px",
+      }}
     >
-      WIR WERKEN MIT HOLZ
-      {pages.map((page) => (
-        <NavLink
-          to={`/${page.toLowerCase()}`}
-          style={{ textDecoration: "none" }}
-        >
-          <Button
-            key={page}
-            onClick={() => {
-              changeActiveButton(page);
-              handleCloseNavMenu();
-            }}
-            sx={{
-              my: 2,
-              color: activeButton === page ? "black" : "white",
-              display: "block",
-            }}
+      <img src={Logo} />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        {pages.map((page) => (
+          <NavLink
+            to={`/${page.toLowerCase()}`}
+            style={{ textDecoration: "none" }}
           >
-            {page}
-          </Button>
-        </NavLink>
-      ))}
+            <Button
+              key={page}
+              onClick={() => {
+                changeActiveButton(page);
+                handleCloseNavMenu();
+              }}
+              sx={{
+                my: 2,
+                color: activeButton === page ? "black" : "white",
+                display: "block",
+              }}
+            >
+              {page}
+            </Button>
+          </NavLink>
+        ))}
+      </Box>
       {/* <Container maxWidth="xl">
         <Toolbar
           disableGutters
