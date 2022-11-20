@@ -1,14 +1,6 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
-  Container,
-} from "@mui/material";
+import { AppBar, Box, IconButton, Typography, Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../utils/icons/wwmh-icon.png";
 
@@ -48,126 +40,81 @@ const ResponsiveAppBar = () => {
       }}
     >
       <a href="/">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </a>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        {pages.map((page) => (
-          <NavLink
-            to={`/${page.toLowerCase()}`}
-            style={{ textDecoration: "none" }}
-          >
-            <Button
-              key={page}
-              onClick={() => {
-                changeActiveButton(page);
-                handleCloseNavMenu();
-              }}
-              sx={{
-                my: 2,
-                color: activeButton === page ? "black" : "white",
-                display: "block",
-              }}
-            >
-              {page}
-            </Button>
-          </NavLink>
-        ))}
-      </Box>
-      {/* <Container maxWidth="xl">
-        <Toolbar
-          disableGutters
+      <div>
+        <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: { xs: "none", sm: "flex" },
+            flexDirection: "row",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <p>Paul + Lena</p>
-          </div>
-          <div>
-           
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
-                width: "500px",
-                justifyContent: "space-between",
-              }}
+          {pages.map((page) => (
+            <NavLink
+              to={`/${page.toLowerCase()}`}
+              style={{ textDecoration: "none" }}
             >
-              {pages.map((page) => (
-                <NavLink
-                  to={`/${page.toLowerCase()}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
-                    key={page}
-                    onClick={() => {
-                      changeActiveButton(page);
-                      handleCloseNavMenu();
-                    }}
-                    sx={{
-                      my: 2,
-                      color: activeButton === page ? "black" : "white",
-                      display: "block",
-                    }}
-                  >
-                    {page}
-                  </Button>
-                </NavLink>
-              ))}
-            </Box> 
-
-             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
+              <Button
+                key={page}
+                onClick={() => {
+                  changeActiveButton(page);
+                  handleCloseNavMenu();
                 }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  my: 2,
+                  color: activeButton === page ? "black" : "white",
+                  display: "block",
                 }}
               >
-                {pages.map((page) => (
-                  <NavLink
-                    to={`/${page.toLowerCase()}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center" sx={{ color: "black" }}>
-                        {page}
-                      </Typography>
-                    </MenuItem>
-                  </NavLink>
-                ))}
-              </Menu>
-            </Box> 
-          </div>
-        </Toolbar>
-      </Container> */}
+                {page}
+              </Button>
+            </NavLink>
+          ))}
+        </Box>
+        <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: "block", sm: "none" },
+            }}
+          >
+            {pages.map((page) => (
+              <NavLink
+                to={`/${page.toLowerCase()}`}
+                style={{ textDecoration: "none" }}
+              >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" sx={{ color: "black" }}>
+                    {page}
+                  </Typography>
+                </MenuItem>
+              </NavLink>
+            ))}
+          </Menu>
+        </Box>
+      </div>
     </AppBar>
   );
 };
