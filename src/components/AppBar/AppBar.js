@@ -2,13 +2,13 @@ import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { AppBar, Box, IconButton, Typography, Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Logo from "../utils/icons/wwmh-icon.png";
+import Logo from "../../utils/icons/wwmh-icon.png";
 
 import Button from "@mui/material/Button";
 
 import MenuItem from "@mui/material/MenuItem";
 import "./AppBar.css";
-import { pages } from "../utils/constants";
+import { pages } from "../../utils/constants";
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
