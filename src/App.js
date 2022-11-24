@@ -1,5 +1,5 @@
 import "./App.css";
-import ResponsiveAppBar from "./components/AppBar";
+import ResponsiveAppBar from "./components/AppBar/AppBar";
 import Home from "./views/Home/Home";
 import Kontakt from "./views/Kontakt/Kontakt";
 import { Routes, Route } from "react-router-dom";
@@ -7,7 +7,6 @@ import { Routes, Route } from "react-router-dom";
 const App = () => {
   return (
     <div className="App">
-      Hello World
       <ResponsiveAppBar />
       <Routes>
         <Route path="/home" element={<Home />} />
