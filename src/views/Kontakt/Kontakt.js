@@ -1,52 +1,50 @@
 import React, { useState } from "react";
-import { Grid, TextField, Button } from "@mui/material";
-
-// const Kontakt = () => {
-//   return <div className="kontakt">Hello World</div> 
-//   };
-// export default Kontakt;
-
-
-const defaultValues = {
-  name: "test",
-  sendermail: "mail@mail.mail",
-  message: "test mail",
-};
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const Kontakt = () => {
-  const [formValues, setFormValues] = useState(defaultValues);
-
-  const handleInputChange = (e) => {
-    const {name, value} = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formValues);
-  };
-
   return (
-    <form class="Form" onSubmit={handleSubmit}>
-      <Grid class="Grid-Form" backgroundColor="red" container alignItems="center" justify="center" directions="column">
-        <Grid item>
-          <TextField id="name-input" name="name" label="Name" type="text" value={formValues.name} onChange={handleInputChange}/>
-        </Grid>
-        <Grid item>
-          <TextField id="sendermail-input" name="sendermail" label="Mail" type="text" value={formValues.sendermail} onChange={handleInputChange}/>
-        </Grid>
-        <Grid item>
-          <TextField id="message-input" name="message" label="Message" type="text" values={formValues.message} onChange={handleInputChange}/>
-        </Grid>
-          <Button variant="contained" color="primary" type="submit">
-            Senden
-          </Button>      
-        </Grid>
-    </form>
+    <Formik
+      initialValues={{ name: '', email: '', message: '' }}
+      validate={values => {
+        const errors = {};
+        if (!values.name) {
+          errors.name = 'Required';
+        }
+        if (!values.email) {
+          errors.email = 'Required';
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = 'Invalid email address';
+        }
+        if (!values.message) {
+          errors.message = 'Required';
+        }
+        return errors;
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <Field type="text" name="name" />
+          <ErrorMessage name="name" component="div" />
+          <Field type="email" name="email" />
+          <ErrorMessage name="email" component="div" />
+          <Field component="textarea" name="message" />
+          <ErrorMessage name="message" component="div" />
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
+
 
 export default Kontakt;
