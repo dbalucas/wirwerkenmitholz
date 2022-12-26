@@ -5,3 +5,8 @@
   flex-direction: column;
   align-items: center;
 }
+.Headline {
+  text-align: center;
+  text-decoration: underline;
+  
+}

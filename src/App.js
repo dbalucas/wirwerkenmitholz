@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 const App = () => {
   return (
     <div className="App">
+      <div className="Headline">Wir werken mit Holz</div>
       <ResponsiveAppBar />
       <Routes>
         <Route path="/home" element={<Home />} />
